@@ -28,7 +28,8 @@ public class BankApplication {
             System.out.println("2. Deposite");
             System.out.println("3. Withdraw");
             System.out.println("4. Previous transaction");
-            System.out.println("5. Exit");
+            System.out.println("5. Transaction history");
+            System.out.println("6. Exit");
 
             option = scan.nextInt();
 
@@ -40,7 +41,7 @@ public class BankApplication {
                 case 2:
                     System.out.println("Enter the amount to deposite- ");
                     int amount = scan.nextInt();
-                    user.deposite(amount);
+                    user.deposit(amount);
                     break;
                 case 3:
                     System.out.println("Enter the amount to withdraw- ");
@@ -51,6 +52,9 @@ public class BankApplication {
                     user.getPreviousTransacation();
                     break;
                 case 5:
+                    user.getTransactionHistory();
+                    break;
+                case 6:
                     System.out.println("****************");
                     break;
                 default:
@@ -58,7 +62,7 @@ public class BankApplication {
                     break;
             }
 
-        }while(option != 5);
+        }while(option != 6);
 
     }
 

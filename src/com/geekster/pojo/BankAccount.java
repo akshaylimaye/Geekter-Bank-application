@@ -1,16 +1,19 @@
 package com.geekster.pojo;
 
+import java.util.ArrayList;
+
 public class BankAccount {
 
     private int customerId;
     private String customerName;
     private int balance;
     private int previousTransaction;
+    private ArrayList<Integer> transactionHistory = new ArrayList<>();
 
     public int getCustomerId() {
         return customerId;
-    }
 
+    }
     public String getCustomerName() {
         return customerName;
     }
@@ -32,10 +35,11 @@ public class BankAccount {
         System.out.println("Current balance is- "  + balance);
     }
 
-    public void deposite(int amount){
+    public void deposit(int amount){
         if(amount > 0){
             balance = balance + amount;
             previousTransaction = amount;
+            transactionHistory.add(amount);
         }else  {
             System.out.println("Please enter valid amount");
         }
@@ -59,9 +63,21 @@ public class BankAccount {
             }else{
                 balance = balance - amount;
                 previousTransaction = -amount;
+                transactionHistory.add(-amount);
             }
         }else {
             System.out.println("Please enter valid amount");
         }
+    }
+
+    public void getTransactionHistory(){
+        for (int amnt : transactionHistory){
+            if(amnt > 0){
+                System.out.println("Credited- " + amnt);
+            }else{
+                System.out.println("Withdrawn- "+ Math.abs(amnt));
+            }
+        }
+        System.out.println("Current balance is- "+ balance);
     }
 }
